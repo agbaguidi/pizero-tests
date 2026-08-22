@@ -1,0 +1,16 @@
+identifier: waveshare_pizero_rp2350/rp2350b/m33
+name: Waveshare RP2350-PiZero (Cortex-M33)
+type: mcu
+arch: arm
+flash: 16384
+ram: 520
+toolchain:
+  - zephyr
+  - gnuarmemb
+supported:
+  - clock
+  - dma
+  - gpio
+  - hwinfo
+  - uart
+  - usbd
