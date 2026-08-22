@@ -1,0 +1,51 @@
+# West workspace (local config + fetched projects)
+.west/
+zephyr/
+modules/
+bootloader/
+tools/
+
+# Build outputs
+**/build/
+**/build-*/
+**/twister-out*/
+**/twister-out.*/
+
+# Generated / IDE
+*.o
+*.obj
+*.elf
+*.map
+*.hex
+*.bin
+*.uf2
+*.lst
+*.d
+compile_commands.json
+.cache/
+.clangd/
+.ccls-cache/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temp
+*.log
+*.tmp
+*.bak
