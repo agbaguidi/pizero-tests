@@ -3,4 +3,4 @@ shields:
     full_name: Waveshare RGB LED HAT
     vendor: waveshare
     supported_features:
-      - led
+      - led_strip
