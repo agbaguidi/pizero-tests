@@ -1,0 +1,22 @@
+/*
+ * Waveshare RS485 CAN HAT
+ * RS485 uses UART1:
+ *   GPIO4  -> TX
+ *   GPIO5  -> RX
+ *   GPIO14 -> RSE
+ */
+
+#include <zephyr/dt-bindings/pinctrl/rpi-pico-rp2350b-pinctrl.h>
+
+&pinctrl {
+    uart1_rs485_default: uart1_rs485_default {
+        group1 {
+            pinmux = <UART1_TX_P4>;
+        };
+
+        group2 {
+            pinmux = <UART1_RX_P5>;
+            input-enable;
+        };
+    };
+};

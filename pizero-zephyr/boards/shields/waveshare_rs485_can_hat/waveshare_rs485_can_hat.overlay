@@ -1,0 +1,15 @@
+#include "waveshare_rs485_can_hat-pinctrl.dtsi"
+
+/ {
+    aliases {
+        rs485 = &uart1;
+    };
+};
+
+&uart1 {
+    current-speed = <115200>;
+    status = "okay";
+
+    pinctrl-0 = <&uart1_rs485_default>;
+    pinctrl-names = "default";
+};

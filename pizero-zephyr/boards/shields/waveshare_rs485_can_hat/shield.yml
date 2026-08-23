@@ -1,0 +1,6 @@
+shields:
+  - name: waveshare_rs485_can_hat
+    full_name: Waveshare RS485 CAN HAT
+    vendor: waveshare
+    supported_features:
+      - rs485
