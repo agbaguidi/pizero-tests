@@ -9,6 +9,21 @@
     pio1_ws2812_default: pio1_ws2812_default {
         group1 {
             pinmux = <PIO1_P18>;
+            /* 
+             * Hardware-level signal conditioning for WS2812B (5V logic) driven by RP2350 (3.3V logic):
+             * 
+             * 1. bias-pull-down: Ties the GPIO18 data line to 0V (GND) during the MCU boot phase
+             * and Zephyr's initialization. This eliminates high-impedance floating states,
+             * preventing the first LED pixel from catching electromagnetic noise and flashing.
+             * 
+             * 1. drive-strength = <12>: Sets the GPIO output current capability to its physical
+             * maximum of 12mA. This minimizes the pin's internal resistance, ensuring ultra-sharp
+             * rise/fall times (high slew rate) to cleanly overcome the line's parasitic capacitance.
+             * It maintains a solid 3.3V high level, allowing the 5V-powered WS2812B to reliably
+             * decode the high-speed 800kHz data stream without a hardware level shifter.
+             */
+            bias-pull-down;
+            drive-strength = <12>;
         };
     };
 };
