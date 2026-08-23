@@ -4,6 +4,10 @@
 #include <zephyr/dt-bindings/gpio/gpio.h>
 
 / {
+    chosen {
+        zephyr,led-strip = &ws2812;
+    };
+
     aliases {
         led-strip = &ws2812;
     };
@@ -26,7 +30,7 @@
 
             gpios = <&gpio0 18 GPIO_ACTIVE_HIGH>;
 
-            chain-length = <1>;
+            chain-length = <32>;
 
             color-mapping = <LED_COLOR_ID_GREEN
                              LED_COLOR_ID_RED
