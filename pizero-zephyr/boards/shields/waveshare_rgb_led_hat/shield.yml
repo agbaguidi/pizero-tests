@@ -1,0 +1,6 @@
+shields:
+  - name: waveshare_rgb_led_hat
+    full_name: Waveshare RGB LED HAT
+    vendor: waveshare
+    supported_features:
+      - led

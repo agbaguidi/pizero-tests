@@ -1,0 +1,14 @@
+/*
+ * Waveshare RGB LED HAT
+ * WS2812 data output on GPIO18 using PIO1
+ */
+
+#include <zephyr/dt-bindings/pinctrl/rpi-pico-rp2350b-pinctrl.h>
+
+&pinctrl {
+    pio1_ws2812_default: pio1_ws2812_default {
+        group1 {
+            pinmux = <PIO1_P18>;
+        };
+    };
+};
