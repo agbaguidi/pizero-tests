@@ -10,7 +10,7 @@ board_runner_args(openocd --cmd-pre-init "source [find target/rp2350.cfg]")
 # The adapter speed is expected to be set by interface configuration.
 # The Raspberry Pi's OpenOCD fork doesn't, so match their documentation at
 # https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html#debugging-with-swd
-board_runner_args(openocd --cmd-pre-init "set_adapter_speed_if_not_set 5000")
+board_runner_args(openocd --cmd-pre-init "adapter speed 5000")
 
 board_runner_args(jlink "--device=RP2350_M33_0")
 board_runner_args(uf2 "--board-id=RP2350")
