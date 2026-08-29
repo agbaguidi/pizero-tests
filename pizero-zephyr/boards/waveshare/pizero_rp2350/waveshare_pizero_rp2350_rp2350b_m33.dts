@@ -13,6 +13,9 @@
 * 2. Core-specific configuration.
 * 3. Board-specific configuration.
 */
+#include <freq.h>
+#include <zephyr/dt-bindings/i2c/i2c.h>
+
 #include <raspberrypi/rpi_pico/rp2350b.dtsi>
 #include <raspberrypi/rpi_pico/m33.dtsi>
 
@@ -69,6 +72,57 @@
 	status = "okay";
 	pinctrl-0 = <&uart0_default>;
 	pinctrl-names = "default";
+};
+
+&uart1 {
+	current-speed = <115200>;
+	status = "disabled";
+	pinctrl-0 = <&uart1_default>;
+	pinctrl-names = "default";
+};
+
+&i2c0 {
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	status = "disabled";
+	pinctrl-0 = <&i2c0_default>;
+	pinctrl-names = "default";
+};
+
+&i2c1 {
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	status = "disabled";
+	pinctrl-0 = <&i2c1_default>;
+	pinctrl-names = "default";
+};
+
+&spi0 {
+	clock-frequency = <DT_FREQ_M(8)>;
+	status = "disabled";
+	pinctrl-0 = <&spi0_default>;
+	pinctrl-names = "default";
+};
+
+&spi1 {
+	clock-frequency = <DT_FREQ_M(8)>;
+	status = "disabled";
+	pinctrl-0 = <&spi1_default>;
+	pinctrl-names = "default";
+};
+
+&adc {
+	status = "disabled";
+};
+
+&pwm {
+	status = "disabled";
+};
+
+&timer0 {
+	status = "okay";
+};
+
+&wdt0 {
+	status = "okay";
 };
 
 zephyr_udc0: &usbd {

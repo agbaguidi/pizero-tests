@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2026 Arnaud Gbaguidi
  * SPDX-License-Identifier: Apache-2.0
+ *
+ * Header pinmux follows the Waveshare RP2350-PiZero / Pico SDK defaults
+ * where they do not fight the UART0 console on GP0/GP1.
  */
 
 #include <zephyr/dt-bindings/pinctrl/rpi-pico-rp2350b-pinctrl.h>
@@ -16,4 +19,58 @@
 			input-enable;
 		};
 	};
+
+	/* Waveshare default UART1 / RS485 HAT TX-RX */
+	uart1_default: uart1_default {
+		group1 {
+			pinmux = <UART1_TX_P4>;
+		};
+
+		group2 {
+			pinmux = <UART1_RX_P5>;
+			input-enable;
+		};
+	};
+
+	/* Avoid I2C0 on GP0/GP1 (console) and GP4/GP5 (UART1) */
+	i2c0_default: i2c0_default {
+		group1 {
+			pinmux = <I2C0_SDA_P8>, <I2C0_SCL_P9>;
+			input-enable;
+			input-schmitt-enable;
+		};
+	};
+
+	/* Waveshare default I2C / Pi HAT I2C1 */
+	i2c1_default: i2c1_default {
+		group1 {
+			pinmux = <I2C1_SDA_P2>, <I2C1_SCL_P3>;
+			input-enable;
+			input-schmitt-enable;
+		};
+	};
+
+	spi0_default: spi0_default {
+		group1 {
+			pinmux = <SPI0_CSN_P17>, <SPI0_SCK_P18>, <SPI0_TX_P19>;
+		};
+
+		group2 {
+			pinmux = <SPI0_RX_P16>;
+			input-enable;
+		};
+	};
+
+	/* Waveshare default SPI */
+	spi1_default: spi1_default {
+		group1 {
+			pinmux = <SPI1_CSN_P13>, <SPI1_SCK_P10>, <SPI1_TX_P11>;
+		};
+
+		group2 {
+			pinmux = <SPI1_RX_P12>;
+			input-enable;
+		};
+	};
+
 };

@@ -8,9 +8,14 @@ toolchain:
   - zephyr
   - gnuarmemb
 supported:
+  - adc
   - clock
   - dma
   - gpio
   - hwinfo
+  - i2c
+  - pwm
+  - spi
   - uart
   - usbd
+  - watchdog
