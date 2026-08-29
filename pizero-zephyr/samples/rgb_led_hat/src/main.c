@@ -45,28 +45,28 @@ int main(void)
     while (1) {
 
         printk("RED\r\n");
-        res = set_color(0x20, 0x00, 0x00);
+        res = set_color(0x05, 0x00, 0x00);
         if (res < 0) {
             printk("ERROR: Failed to set color\r\n");
         }
         k_sleep(K_SECONDS(2));
 
         printk("GREEN\r\n");
-        res = set_color(0x00, 0x20, 0x00);
+        res = set_color(0x00, 0x05, 0x00);
         if (res < 0) {
             printk("ERROR: Failed to set color\r\n");
         }
         k_sleep(K_SECONDS(2));
 
         printk("BLUE\r\n");
-        res = set_color(0x00, 0x00, 0x20);
+        res = set_color(0x00, 0x00, 0x05);
         if (res < 0) {
             printk("ERROR: Failed to set color\r\n");
         }
         k_sleep(K_SECONDS(2));
 
         printk("WHITE\r\n");
-        res = set_color(0x20, 0x20, 0x20);
+        res = set_color(0x05, 0x05, 0x05);
         if (res < 0) {
             printk("ERROR: Failed to set color\r\n");
         }
