@@ -12,6 +12,8 @@ board_runner_args(openocd --cmd-pre-init "source [find target/rp2350.cfg]")
 # https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html#debugging-with-swd
 board_runner_args(openocd --cmd-pre-init "adapter speed 5000")
 
+board_runner_args(openocd --target-handle=_TARGETNAME_CM0)
+
 board_runner_args(jlink "--device=RP2350_M33_0")
 board_runner_args(uf2 "--board-id=RP2350")
 
