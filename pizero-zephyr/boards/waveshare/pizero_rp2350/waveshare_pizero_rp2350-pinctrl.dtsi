@@ -61,7 +61,7 @@
 		};
 	};
 
-	/* Waveshare default SPI */
+	/* Header SPI1 (mutually exclusive with onboard TF / spi1_tf_default) */
 	spi1_default: spi1_default {
 		group1 {
 			pinmux = <SPI1_CSN_P13>, <SPI1_SCK_P10>, <SPI1_TX_P11>;
@@ -69,6 +69,22 @@
 
 		group2 {
 			pinmux = <SPI1_RX_P12>;
+			input-enable;
+		};
+	};
+
+	/*
+	 * Onboard microSD (TF) in SPI mode.
+	 * CLK=GP30, MOSI/CMD=GP31, MISO/DAT0=GP40; CS/DAT3=GP43 via cs-gpios.
+	 * DAT1/DAT2 (GP41/GP42) unused in SPI mode.
+	 */
+	spi1_tf_default: spi1_tf_default {
+		group1 {
+			pinmux = <SPI1_SCK_P30>, <SPI1_TX_P31>;
+		};
+
+		group2 {
+			pinmux = <SPI1_RX_P40>;
 			input-enable;
 		};
 	};
