@@ -14,6 +14,7 @@
 * 3. Board-specific configuration.
 */
 #include <freq.h>
+#include <zephyr/dt-bindings/gpio/gpio.h>
 #include <zephyr/dt-bindings/i2c/i2c.h>
 
 #include <raspberrypi/rpi_pico/rp2350b.dtsi>
@@ -29,6 +30,10 @@
 		zephyr,shell-uart = &uart0;
 		zephyr,code-partition = &code_partition;
 		zephyr,udc0 = &usbd;
+	};
+
+	aliases {
+		sdhc0 = &sdhc0;
 	};
 };
 
@@ -67,6 +72,10 @@
 	status = "okay";
 };
 
+&gpio0_hi {
+	status = "okay";
+};
+
 &uart0 {
 	current-speed = <115200>;
 	status = "okay";
@@ -102,11 +111,29 @@
 	pinctrl-names = "default";
 };
 
+/*
+ * Onboard microSD over SPI1 (GP30/31/40, CS on GP43).
+ * Header SPI1 (GP10-13) uses &spi1_default; remux only if TF is unused.
+ */
 &spi1 {
-	clock-frequency = <DT_FREQ_M(8)>;
-	status = "disabled";
-	pinctrl-0 = <&spi1_default>;
+	clock-frequency = <DT_FREQ_M(12)>;
+	status = "okay";
+	pinctrl-0 = <&spi1_tf_default>;
 	pinctrl-names = "default";
+	cs-gpios = <&gpio0_hi 11 GPIO_ACTIVE_LOW>; /* GP43 SD_CS / SDIO_D3 */
+
+	sdhc0: sdhc@0 {
+		compatible = "zephyr,sdhc-spi-slot";
+		reg = <0>;
+		status = "okay";
+		spi-max-frequency = <12000000>;
+
+		mmc {
+			compatible = "zephyr,sdmmc-disk";
+			disk-name = "SD";
+			status = "okay";
+		};
+	};
 };
 
 &adc {

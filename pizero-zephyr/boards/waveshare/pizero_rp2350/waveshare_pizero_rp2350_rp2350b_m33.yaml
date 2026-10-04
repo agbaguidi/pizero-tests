@@ -15,6 +15,7 @@ supported:
   - hwinfo
   - i2c
   - pwm
+  - sdhc
   - spi
   - uart
   - usbd

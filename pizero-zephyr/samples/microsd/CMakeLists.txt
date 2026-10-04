@@ -1,0 +1,12 @@
+# CMake documentation: https://cmake.org/cmake/help/latest/index.html
+cmake_minimum_required(VERSION 3.20.0)
+
+find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+
+project(microsd
+        VERSION 1.0.0
+        DESCRIPTION "Onboard microSD FatFS sample"
+        HOMEPAGE_URL "https://github.com/pizero-zephyr/pizero-zephyr"
+)
+
+target_sources(app PRIVATE src/main.c)
