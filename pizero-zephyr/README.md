@@ -23,6 +23,8 @@ waveshare_pizero_rp2350/rp2350b/m33
 
 Console is **UART0** on **GPIO0 (TX)** / **GPIO1 (RX)** at **115200** 8N1.
 
+Schematics, datasheets, and HAT PDFs live under [`documents/`](../documents/).
+
 ## Build samples
 
 Bare board (no HAT):
